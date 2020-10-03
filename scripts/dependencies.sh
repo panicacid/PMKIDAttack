@@ -7,8 +7,10 @@ TIMESTAMP=`date "+[%Y-%m-%d %H:%M:%S]"`
 
 if [[ -e /sd ]]; then
 LOGFILE="/sd/modules/PMKIDAttack/pmkidattack.log"
+mkdir /sd/modules/PMKIDAttack/scripts/ipk/
 else
 LOGFILE="/pineapple/modules/PMKIDAttack/pmkidattack.log"
+mkdir /pineapple/modules/PMKIDAttack/scripts/ipk/
 fi
 
 function add_log {
