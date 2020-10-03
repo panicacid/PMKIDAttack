@@ -18,7 +18,7 @@ https://forums.hak5.org/topic/45365-module-pmkidattack/
 ```
 opkg update && opkg install git git-http
 cd /pineapple/modules/
-git clone https://github.com/n3d-b0y/PMKIDAttack.git PMKIDAttack
+git clone https://github.com/paniacid/PMKIDAttack.git PMKIDAttack
 chmod +x -R /pineapple/modules/PMKIDAttack/scripts
 ```
 
@@ -26,6 +26,6 @@ chmod +x -R /pineapple/modules/PMKIDAttack/scripts
 ```
 opkg update && opkg --dest sd install git git-http
 cd /sd/modules/
-git clone https://github.com/n3d-b0y/PMKIDAttack.git PMKIDAttack
+git clone https://github.com/panicacid/PMKIDAttack.git PMKIDAttack
 chmod +x -R /sd/modules/PMKIDAttack/scripts
 ```
