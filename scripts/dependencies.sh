@@ -26,38 +26,63 @@ touch /tmp/PMKIDAttack.progress
 
 if [[ "$1" = "install" ]]; then
 
+
+
 	add_log "Updating opkg"
 
 	if [[ -e /sd ]]; then
 		add_log "Installing on sd"
+		cd /sd/modules/PMKIDAttack/scripts/ipk/
+		
+		wget "https://github.com/adde88/hcxtools-hcxdumptool-openwrt/raw/openwrt-19.07/bin/packages/mips_24kc/custom/hcxtools-custom_6.1.2-1_mips_24kc.ipk"
 
-	    opkg --dest sd install /pineapple/modules/PMKIDAttack/scripts/ipk/hcxtools_5.1.3-1_ar71xx.ipk >> $LOGFILE
-
+	    opkg --dest sd install "hcxtools-custom_6.1.2-1_mips_24kc.ipk" --force-overwrite
+add_log $?
 		if [[ $? -ne 0 ]]; then
-			add_log "ERROR: opkg --dest sd install hcxtools_5.1.3-1_ar71xx.ipk failed"
+		add_log $?
+			add_log "ERROR: opkg --dest sd install hcxtools-custom_6.1.2-1_mips_24kc.ipk to sd failed"
+			
 			exit 1
 		fi
+		
+		cd /sd/modules/PMKIDAttack/scripts/ipk/
+		
+		wget "https://github.com/adde88/hcxtools-hcxdumptool-openwrt/raw/openwrt-19.07/bin/packages/mips_24kc/custom/hcxdumptool-custom_6.1.2-1_mips_24kc.ipk"
 
-		opkg --dest sd install /pineapple/modules/PMKIDAttack/scripts/ipk/hcxdumptool_5.1.3-1_ar71xx.ipk >> $LOGFILE
-
+	    opkg --dest sd install "hcxdumptool-custom_6.1.2-1_mips_24kc.ipk" --force-overwrite
+add_log $?
 		if [[ $? -ne 0 ]]; then
-			add_log "ERROR: opkg --dest sd install hcxdumptool_5.1.3-1_ar71xx.ipk failed"
+		add_log $?
+			add_log "ERROR: opkg --dest sd install hcxdumptool-custom_6.1.2-1_mips_24kc.ipk to sd failed"
+			
 			exit 1
 		fi
 	else
 		add_log "Installing on disk"
+		
+		cd /pineapple/modules/PMKIDAttack/scripts/ipk/
 
-        opkg install /pineapple/modules/PMKIDAttack/scripts/ipk/hcxtools_5.1.3-1_ar71xx.ipk
+		wget "https://github.com/adde88/hcxtools-hcxdumptool-openwrt/raw/openwrt-19.07/bin/packages/mips_24kc/custom/hcxtools-custom_6.1.2-1_mips_24kc.ipk"
+
+        opkg install /pineapple/modules/PMKIDAttack/scripts/ipk/hcxtools-custom_6.1.2-1_mips_24kc.ipk --force-overwrite
 
 		if [[ $? -ne 0 ]]; then
-			add_log "ERROR: opkg install hcxtools_5.1.3-1_ar71xx.ipk failed"
+		
+			add_log "ERROR: opkg install hcxtools-custom_6.1.2-1_mips_24kc.ipk to disk failed"
+			
 			exit 1
 		fi
+		
+		cd /pineapple/modules/PMKIDAttack/scripts/ipk/
+		
+		wget "https://github.com/adde88/hcxtools-hcxdumptool-openwrt/raw/openwrt-19.07/bin/packages/mips_24kc/custom/hcxdumptool-custom_6.1.2-1_mips_24kc.ipk"
 
-		opkg install /pineapple/modules/PMKIDAttack/scripts/ipk/hcxdumptool_5.1.3-1_ar71xx.ipk
+		opkg install /pineapple/modules/PMKIDAttack/scripts/ipk/hcxdumptool-custom_6.1.2-1_mips_24kc.ipk --force-overwrite
 
 		if [[ $? -ne 0 ]]; then
-			add_log "ERROR: opkg install hcxdumptool_5.1.3-1_ar71xx.ipk failed"
+		
+			add_log "ERROR: opkg install hcxdumptool-custom_6.1.2-1_mips_24kc.ipk to disk failed"
+			
 			exit 1
 		fi
 	fi
@@ -86,3 +111,4 @@ if [[ "$1" = "remove" ]]; then
 fi
 
 rm /tmp/PMKIDAttack.progress
+
